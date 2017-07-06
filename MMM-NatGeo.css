@@ -1,0 +1,30 @@
+/* Copy and paste any or all of these css entries into your custom.css file inside your
+ * css folder. The functions are annotated to make things as easy as possible for you.
+ * Use any colors you want! For example - "http://htmlcolorcodes.com/color-picker/"
+ * Pick your color, copy and paste the HEX number. Example - #62FF00 = bright green.
+ */
+
+.MMM-NatGeo .xsmall.bright.header {
+  color: red;             /* Color the title text. Default is white. */
+  text-align: left;           /* Align the title text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want title text */
+}
+ 
+ 
+.MMM-NatGeo .small.bright {
+  color: #62FF00;             /* Color the title text. Default is white. */
+  text-align: left;           /* Align the title text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want title text */
+}
+
+.MMM-NatGeo .xsmall.bright {
+  color: yellow;             /* Color the information. Default is white. */
+  text-align: left;           /* Align the information. (left, center, right) */
+/*  display: none; */         /* Uncomment if you don't want descriptive information */
+}
+
+.MMM-NatGeo .photo {
+    width: 350px;             /* Maximum width of image */
+    padding: 0px;             /* Nudge image */
+    float: left;              /* Align the picture. (left, center, right) */
+}
