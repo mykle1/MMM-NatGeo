@@ -16,6 +16,7 @@ Module.register("MMM-NatGeo", {
         retryDelay: 2500,
         rotateInterval: 30 * 1000,   // 30 seconds
         updateInterval: 30 * 60 * 1000,
+	apiKey: ""
 
     },
 
@@ -29,7 +30,7 @@ Module.register("MMM-NatGeo", {
         requiresVersion: "2.1.0",
 
             //  Set locale.
-        this.url = "https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=bdc660fcecc745228206b1865e7d0612";
+        this.url = "https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey="+this.config.apiKey;
         this.NatGeo = [];
         this.activeItem = 0;
         this.rotateInterval = null;
@@ -53,33 +54,24 @@ Module.register("MMM-NatGeo", {
             header.classList.add("xsmall", "bright", "header");
             header.innerHTML = this.config.header;
             wrapper.appendChild(header);
-        }
+        } 
 		
-		
-	//	My data isn't rotating! Why? I dont know. I'm an idiot
-		
-		var NatGeoKeys = Object.keys(this.NatGeo);
+	var NatGeoKeys = Object.keys(this.NatGeo);
         if (NatGeoKeys.length > 0) {
             if (this.activeItem >= NatGeoKeys.length) {
                 this.activeItem = 0;
             }
-            var NatGeo = this.NatGeo[NatGeoKeys[this.activeItem]];
-		
-		
-
-    //    var NatGeo = this.NatGeo;
+         var NatGeo = this.NatGeo[NatGeoKeys[this.activeItem]];
+ 
 
         var top = document.createElement("div");
         top.classList.add("list-row");
-		
-		var NatGeo = this.NatGeo;
-
 
         // The title
         var title = document.createElement("div");
         var NatGeoTitle = document.createElement("p");
         NatGeoTitle.classList.add("small", "bright");
-        NatGeoTitle.innerHTML = NatGeo[0].title; // the first object is NatGeo[0];
+        NatGeoTitle.innerHTML = NatGeo.title; // the first object is NatGeo[0];
         title.appendChild(NatGeoTitle);
         wrapper.appendChild(title);
 
@@ -89,7 +81,7 @@ Module.register("MMM-NatGeo", {
         var pic = document.createElement("div");
         var img = document.createElement("img");
         img.classList.add("photo");
-        img.src = NatGeo[0].urlToImage; // the first object is NatGeo[0]
+        img.src = NatGeo.urlToImage; // the first object is NatGeo[0]
         pic.appendChild(img);
         wrapper.appendChild(pic);
 
@@ -100,7 +92,7 @@ Module.register("MMM-NatGeo", {
         var description = document.createElement("div");
         var NatGeoDescription = document.createElement("p");
         NatGeoDescription.classList.add("xsmall", "bright", "description");
-        NatGeoDescription.innerHTML = NatGeo[0].description; // the first object is NatGeo[0];
+        NatGeoDescription.innerHTML = NatGeo.description; // the first object is NatGeo[0];
         description.appendChild(NatGeoDescription);
         wrapper.appendChild(description);
 
@@ -112,6 +104,7 @@ Module.register("MMM-NatGeo", {
     processNatGeo: function(data) {
         this.today = data.Today;
         this.NatGeo = data; // NatGeo = objects
+		//console.log(this.NatGeo);
         this.loaded = true;
     },
 
